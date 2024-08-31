@@ -6,6 +6,7 @@ from .cfmm import cFastMarcher
 FAR, NARROW, FROZEN, MASK = 0, 1, 2, 3
 DISTANCE, TRAVEL_TIME, EXTENSION_VELOCITY = 0, 1, 2
 
+np_int=np.int_ if np.__version__.startswith("1") else np.long
 
 def pre_process_args(phi, dx, narrow, periodic, ext_mask=None):
     """
@@ -20,14 +21,14 @@ def pre_process_args(phi, dx, narrow, periodic, ext_mask=None):
     dx = np.array(dx)
 
     if isinstance(phi, np.ma.MaskedArray):
-        flag = np.zeros(phi.shape, dtype=np.dtype("longlong"))
+        flag = np.zeros(phi.shape, dtype=np_int)
         flag[phi.mask] = MASK
         phi = phi.data
     else:
-        flag = np.zeros(phi.shape, dtype=np.dtype("longlong"))
+        flag = np.zeros(phi.shape, dtype=np_int)
 
     if ext_mask is None:
-        ext_mask = np.zeros(phi.shape, dtype=np.dtype("longlong"))
+        ext_mask = np.zeros(phi.shape, dtype=np_int)
 
     periodic_data = 0
     if isinstance(periodic, bool):
