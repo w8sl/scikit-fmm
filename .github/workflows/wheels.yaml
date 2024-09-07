@@ -32,9 +32,9 @@ jobs:
           CIBW_TEST_REQUIRES: numpy
           CIBW_TEST_COMMAND: python -c "import skfmm, sys; sys.exit(skfmm.test())"
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}
+          name: cibw-wheels-${{ matrix.os }}-${{ matrix.version}}
           path: ./wheelhouse/*.whl
 
 
