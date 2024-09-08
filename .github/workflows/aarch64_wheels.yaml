@@ -37,7 +37,7 @@ jobs:
           
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}-${{ matrix.version}}
+          name: linux-aarch64-${{ matrix.version}}-wheel
           path: ./wheelhouse/*.whl
 
 
