@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9","3.10","3.11","3.12","3.13"]
 
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +31,8 @@ jobs:
       - name: Run skfmm tests
         run: |
           cd .. && python -c "import skfmm, sys; sys.exit(skfmm.test())"
+          pip install numpy==1.26.4
+          python -c "import skfmm, sys; sys.exit(skfmm.test())"
       - uses: actions/upload-artifact@v3
         with:
           name: linux-artifacts
