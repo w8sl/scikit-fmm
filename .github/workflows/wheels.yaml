@@ -1,9 +1,17 @@
 name: Build and publish wheels
 
 on:
-  push:
-    tags:
-      - '*'  # Triggers the workflow on version tags
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: 'Upload wheels and sdist to PyPI? (0: no, 1: yes)'
+        required: true
+        default: '0'
+
+#on:
+#  push:
+#    tags:
+#      - '*'  # Triggers the workflow on version tags
 
 permissions:
   contents: write
