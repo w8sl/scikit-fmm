@@ -2,7 +2,11 @@ name: Windows x64 Build
 
 on: 
   workflow_dispatch:
-
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 jobs:
   build:
 
