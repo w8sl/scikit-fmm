@@ -7,7 +7,12 @@ on:
         description: 'Upload wheels and sdist to PyPI? (0: no, 1: yes)'
         required: true
         default: '0'
-
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  
 permissions:
   contents: write
   actions: read
