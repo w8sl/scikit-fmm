@@ -2,7 +2,11 @@ name: Windows ARM Build
 
 on: 
   workflow_dispatch:
-
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 jobs:
   build:
 
